@@ -1,0 +1,83 @@
+menu "Dulab Example Configuration"
+
+    menu "MQTT"
+        config BROKER_URL
+            string "Broker URL"
+            default "mqtt://broker.hivemq.com"
+            help
+                URL of the broker to connect to
+
+        config BROKER_URL_FROM_STDIN
+            bool
+            default y if BROKER_URL = "FROM_STDIN"
+    endmenu
+
+    menu "I2C Master"
+        config I2C_MASTER_SCL
+            int "SCL GPIO Num"
+            default 22
+            help
+                GPIO number for I2C Master clock line.
+
+        config I2C_MASTER_SDA
+            int "SDA GPIO Num"
+            default 21
+            help
+                GPIO number for I2C Master data line.
+
+        config I2C_MASTER_PORT_NUM
+            int "Port Number"
+            default 0
+            help
+                Port number for I2C Master device.
+
+        config I2C_MASTER_FREQUENCY
+            int "Master Frequency"
+            default 100000
+            help
+                I2C Speed of Master device.
+    endmenu
+
+    menu "UART for RaspberryPI"
+
+        config EXAMPLE_UART_PORT_NUM
+            int "UART port number"
+            range 0 2
+            default 2
+            help
+                UART communication port number for the example.
+                See UART documentation for available port numbers.
+    
+        config EXAMPLE_UART_BAUD_RATE
+            int "UART communication speed"
+            range 1200 115200
+            default 115200
+            help
+                UART communication speed for Modbus example.
+    
+        config EXAMPLE_UART_RXD
+            int "UART RXD pin number"
+            range 0 34
+            default 16
+            help
+                GPIO number for UART RX pin. See UART documentation for more information
+                about available pin numbers for UART.
+    
+        config EXAMPLE_UART_TXD
+            int "UART TXD pin number"
+            range 0 34
+            default 17
+            help
+                GPIO number for UART TX pin. See UART documentation for more information
+                about available pin numbers for UART.
+    
+        config EXAMPLE_TASK_STACK_SIZE
+            int "UART task stack size"
+            range 1024 16384
+            default 2048
+            help
+                Defines stack size for UART echo example. Insufficient stack size can cause crash.
+    
+    endmenu    
+
+endmenu
