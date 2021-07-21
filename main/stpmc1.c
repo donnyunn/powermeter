@@ -128,7 +128,7 @@ static void stpcm1_load_regMap(void)
 	{
         *((uint32_t*)&(stpmc1.regMap.DAP) + i) =
 			(stpmc1.reg[i * 4 + 3] << 24) |
-			(stpmc1.reg[i * 4 + 2] << 26) |
+			(stpmc1.reg[i * 4 + 2] << 16) |
 			(stpmc1.reg[i * 4 + 1] << 8) |
 			(stpmc1.reg[i * 4 + 0] << 0);
     }
